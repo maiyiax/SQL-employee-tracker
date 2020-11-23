@@ -1,55 +1,55 @@
 /* Department Seeds */
 
 INSERT INTO department (name)
-VALUES ('Human Resource');
+VALUE ('Human Resource');
 
 INSERT INTO department (name)
-VALUES ('Sales');
+VALUE ('Sales');
 
 INSERT INTO department (name)
-VALUES ('Customer Service');
+VALUE ('Customer Service');
 
 INSERT INTO department (name)
-VALUES ('IT');
+VALUE ('IT');
 
 
 /* Employee Role Seeds */
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('HR Assistant', 37000, 1);
+INSERT INTO roles (title, salary)
+VALUES ('HR Assistant', 37000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('HR Rep', 40000, 1)
+INSERT INTO roles (title, salary)
+VALUES ('HR Rep', 40000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('HR Manager', 70000, 1)
+INSERT INTO roles (title, salary)
+VALUES ('HR Manager', 70000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Sales Rep', 60000, 2)
+INSERT INTO roles (title, salary)
+VALUES ('Sales Rep', 60000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Account Executive', 68000, 2)
+INSERT INTO roles (title, salary)
+VALUES ('Account Executive', 68000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Sales Manager', 85000, 2)
+INSERT INTO roles (title, salary)
+VALUES ('Sales Manager', 85000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Customer Service Rep', 32000, 3)
+INSERT INTO roles (title, salary)
+VALUES ('Customer Service Rep', 32000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Support Specialist', 35000, 3)
+INSERT INTO roles (title, salary)
+VALUES ('Support Specialist', 35000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Customer Service Manager', 50000, 3)
+INSERT INTO roles (title, salary)
+VALUES ('Customer Service Manager', 50000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Software Developer', 65000, 4)
+INSERT INTO roles (title, salary)
+VALUES ('Software Developer', 65000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Systems Analyst', 58000, 4)
+INSERT INTO roles (title, salary)
+VALUES ('Systems Analyst', 58000);
 
-INSERT INTO role (title, salary, department_id)
-VALUES ('Software Engineer', 100000, 4)
+INSERT INTO roles (title, salary)
+VALUES ('Software Engineer', 100000);
 
 /* Employee Seeds */
 
