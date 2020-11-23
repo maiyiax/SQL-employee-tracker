@@ -12,7 +12,13 @@ const connection = mysql.createConnection({
     user: 'root',
     password: process.env.MYSQL_PW,
     database: "tracking_db"
-})
+});
+
+connection.connect(err => {
+    if (err) throw err;
+    console.log('connected as id ' + connection.threadId);
+    presentOptions();
+});
 
 
 // GIVEN a command-line application that accepts user input
@@ -34,8 +40,6 @@ const presentOptions = () => {
                     'Add an Employee',
                     'Update an Employee Role'
                 ]
-
-
             }
         )
         .then((response) => {
@@ -43,6 +47,7 @@ const presentOptions = () => {
             switch(response) {
                 case 'View all Departments':
                     // return function to view departments
+                    viewDepartment();
                     break;
 
                 case 'View all Roles':
@@ -70,9 +75,16 @@ const presentOptions = () => {
                     break;
             }
         })
-}
+};
+
 // WHEN I choose to view all departments
 // THEN I am presented with a formatted table showing department names and department ids
+const viewDepartment = () => {
+    connection.query('SELECT * FROM department', function(err, res) {
+        if (err) throw err;
+        console.table(res);
+    });
+};
 // WHEN I choose to view all roles
 // THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
 // WHEN I choose to view all employees
