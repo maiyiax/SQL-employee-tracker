@@ -5,7 +5,6 @@ USE tracking_db;
 CREATE TABLE department (
     id INTEGER AUTO_INCREMENT NOT NULL,
     name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE role (
