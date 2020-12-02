@@ -77,6 +77,7 @@ const presentOptions = () => {
 
                 case 'Update an Employee Role':
                     // return function to update role
+                    updateEmployee();
                     break;
 
                 case 'Exit':
@@ -269,17 +270,17 @@ const roleOptions = () => {
     return rolesArr;
 };
 
-const managerArr = [];
-const managerOptions = () => {
-    connection.query(`SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS manager 
+const employeeArr = [];
+const employeeOptions = () => {
+    connection.query(`SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS employee 
                       FROM employee
                       LEFT JOIN roles on roles.id = employee.role_id`, function (err, res) {
         if (err) throw err;
         for (let a = 0; a < res.length; a++) {
-            managerArr.push(res[a].manager);
+            employeeArr.push(res[a].employee);
         }
     });
-    return managerArr;
+    return employeeArr;
 }
 
 const addEmployee = () => {
@@ -320,14 +321,14 @@ const addEmployee = () => {
             name: 'manager',
             type: 'list',
             message: "Who is this employee's manager?",
-            choices: managerOptions()
+            choices: employeeOptions()
         }
     ])
-        .then(function (response) {
+        .then((response) => {
             // convert role title and manager name to ID's
             let roleID = roleOptions().indexOf(response.role) + 1;
 
-            let managerId = managerOptions().indexOf(response.manager) + 1;
+            let managerId = employeeOptions().indexOf(response.manager) + 1;
 
             // console.log(roleID);
             // console.log(managerId);
@@ -355,7 +356,46 @@ const addEmployee = () => {
 };
 
 // WHEN I choose to update an employee role
-// THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
+// THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+const updateEmployee = () => {
+
+    inquirer.prompt([
+        {
+            name: 'employee',
+            type: 'list',
+            message: 'Who would you like to update?',
+            choices: employeeOptions()
+        },
+        {
+            name: 'newRole',
+            type: 'list',
+            message: "What is the employee's new role?",
+            choices: roleOptions()
+        }
+    ])
+    .then (response => {
+        let roleID = roleOptions().indexOf(response.role) + 1;
+        let name = (response.employee).split(' ');
+        // console.log(name[0]);
+        connection.query(`UPDATE employee SET ? WHERE?`,
+        [{
+            first_name: name[0],
+            last_name: name[1]
+        },
+        {
+            role_id: roleID
+        }],
+        function(err){
+            if (err) throw err;
+            console.log(`
+======================
+Role has been updated!
+======================\n`)
+            console.table(response);
+            presentOptions();
+        });
+    });
+};
 
 
 
