@@ -344,9 +344,9 @@ const addEmployee = () => {
                     if (err) throw err;
 
                     console.log(`
-                    ===============
-                    Adding Employee
-                    ===============\n`)
+===============
+Adding Employee
+===============\n`)
                     console.table(response)
                     presentOptions();
                 });
