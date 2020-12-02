@@ -46,10 +46,10 @@ INSERT INTO roles (title, salary, department_id)
 VALUES ('Software Developer', 65000, 4);
 
 INSERT INTO roles (title, salary, department_id)
-VALUES ('Systems Analyst', 58000, 4);
+VALUES ('Software Engineer', 100000, 4);
 
 INSERT INTO roles (title, salary, department_id)
-VALUES ('Software Engineer', 100000, 4);
+VALUES ('IT Manager', 150000, 4);
 
 /* Employee Seeds */
 
@@ -81,10 +81,10 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('Nelson', 'Blanc', 9, NULL);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Roger', 'Jones', 10, NULL);
+VALUES ('Roger', 'Jones', 10, 12);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Mary', 'Blake', 11, NULL);
+VALUES ('Mary', 'Blake', 11, 12);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('Aria', 'Peri', 12, NULL);
